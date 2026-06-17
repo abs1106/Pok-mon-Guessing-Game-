@@ -15,7 +15,7 @@ app.get("/start/",  async (req, res) => {
     hints: 5,
     hintsUsed: 0
   };
-  res.send(gameId);// send response
+  res.send("You game ID is " + gameId);// send response which is your game ID
 });
 
 app.listen(4000);
