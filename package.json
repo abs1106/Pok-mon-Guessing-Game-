@@ -1,7 +1,11 @@
 {
-  "name": "poke_api",
-  "packageManager": "yarn@4.14.1",
+  "name": "y",
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/abs1106/Pok-mon-Guessing-Game-.git",
+  "author": "Arwa Baig <arwabaig786@gmail.com>",
+  "license": "MIT"
 }
