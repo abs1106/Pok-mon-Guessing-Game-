@@ -19,3 +19,8 @@ app.get("/start/",  async (req, res) => {
 });
 
 app.listen(4000);
+
+app.post("/guess"), (req, res) => {
+    const games = req.body
+    res.send(PokemonResponse)
+}
