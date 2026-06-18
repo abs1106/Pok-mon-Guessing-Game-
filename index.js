@@ -6,15 +6,14 @@ app.use(express.json());
 const games = {};
 
 app.get("/start/",  async (req, res) => {
-   const gameId = Math.floor(Math.random() * 10000);// generate gameId
-   const pokemonId = Math.floor(Math.random() * 151)+1;// generate pokemonId
-  const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)// fetch pokemom
-  const pokemonData = await pokemonResponse.json();// store game
-  // const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)// fetch pokemom
-  // const pokemonData = await pokemonResponse.json();// store game
+  const gameId = Math.floor(Math.random() * 10000);// generate gameId
+  const pokemonId = Math.floor(Math.random() * 151)+1;// generate pokemonId
 
-  // const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)// fetch pokemom
-  // const pokemonData = await pokemonResponse.json();// store game
+  const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)// fetch pokemom 
+  const pokemonData = await pokemonResponse.json();// store game
+
+  const speciesResponse = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)// fetch pokemom
+  const speciesData = await speciesResponse.json();// store game
 
     games[gameId] = {
     pokemonName: pokemonData.name,
@@ -24,6 +23,8 @@ app.get("/start/",  async (req, res) => {
     firstLetter: pokemonData.name[0],
     ability: pokemonData.abilities[0].ability.name,
     type: pokemonData.types[0].type.name,
+    color:speciesData.color.name,
+    habitat: speciesData.habitat.name
   };
   res.send("You game ID is " + gameId);// send response which is your game ID
 });
