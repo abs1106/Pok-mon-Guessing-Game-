@@ -20,14 +20,15 @@ app.get("/start/",  async (req, res) => {
     pokemonId,
     hints: 5,
     hintsUsed: 0,
-    firstLetter: pokemonData.name[0],
+    secondLetter:pokemonData.name[0],
+    firstLetter: pokemonData.name[1],
     ability: pokemonData.abilities[0].ability.name,
     type: pokemonData.types[0].type.name,
     color:speciesData.color.name,
     habitat: speciesData.habitat.name,
-    pictue: pokemonData.sprite.front_default
+    pictue: pokemonData.sprites.front_default
   };
-  res.send("Your game ID is " + gameId);// send response which is your game ID
+  res.send("Your game ID is " + gameId + "Your starting hint is " + game.color);// send response which is your game ID
 });
 
 
@@ -41,23 +42,23 @@ app.post("/guess", (req, res) => {
       }
 
       if (guess.toLowerCase().trim() === game.pokemonName.toLowerCase()) {
-    return res.send("You guessed correctly!" + game.pictue);
+    return res.send("You guessed correctly!" + "\n" +  game.pictue);
       }else{
         game.hintsUsed++;
         } if (game.hintsUsed === 1) {
-              return res.send( "Your first hint is the color, this Pokemon's color is " + game.color);
+              return res.send( "Your first hint: Pokemon's ability " + game.ability);
             }
             else if (game.hintsUsed === 2) {
-              return res.send("Your second hint is the ability, this Pokemon's ability is " +game.ability)
+              return res.send("Your second hint: Pokemon's type is " + game.type)
             }
             else if (game.hintsUsed === 3) {
-              return res.send("Your third hint is the type, this Pokemon's type is " +game.type)
+              return res.send("Your third hint: Pokemon's habitat is " + game.habitat)
             }
             else if (game.hintsUsed === 4) {
-              return res.send("Your fourth hint is the habitat, this Pokemon's habitat " +game.habitat)
+              return res.send("Your fourth hint: Pokemon's color is " + game.color)
             }
             else if (game.hintsUsed === 5) {
-              return res.send("Your fifth and final hint is the first letter, this Pokemon's first letter is " +game.firstLetter)
+              return res.send("Your final hint: Pokemon's second letter is " +game.secondLetter)
             }
             else if (game.hintsUsed === 6) {
             return res.send("Too many guesses the Pokemon was: " + game.pokemonName + "\n"+ game.pictue )
