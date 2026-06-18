@@ -22,24 +22,6 @@ app.get("/start/",  async (req, res) => {
 app.listen(4000);
 
 app.post("/guess"), (req, res) => {
-    const gameId = req.body.gameId
-    const guess = req.body.guess
-    const game = games[gameId]
-    
-     return res.status(404).json({ error: "GameId doesnt exist " });
-
-    if (guess === game.pokemonName)
-        res.send("You guessed correctly!");
-    {
-        
-    }
-        
-
-
-
-
-  }
-  
-    
-
-
+    const games = req.body
+    res.send(PokemonResponse)
+}
