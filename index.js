@@ -20,15 +20,15 @@ app.get("/start/",  async (req, res) => {
     pokemonId,
     hints: 5,
     hintsUsed: 0,
-    secondLetter:pokemonData.name[0],
-    firstLetter: pokemonData.name[1],
+    secondLetter:pokemonData.name[1],
+    firstLetter: pokemonData.name[0],
     ability: pokemonData.abilities[0].ability.name,
     type: pokemonData.types[0].type.name,
     color:speciesData.color.name,
     habitat: speciesData.habitat.name,
-    pictue: pokemonData.sprites.front_default
+    picture: pokemonData.sprites.front_default
   };
-  res.send("Your game ID is " + gameId + "Your starting hint is " + game.color);// send response which is your game ID
+  res.send("Your game ID is " + gameId + " Your starting hint: Pokemon's color is " + speciesData.color.name);// send response which is your game ID
 });
 
 
@@ -42,7 +42,7 @@ app.post("/guess", (req, res) => {
       }
 
       if (guess.toLowerCase().trim() === game.pokemonName.toLowerCase()) {
-    return res.send("You guessed correctly!" + "\n" +  game.pictue);
+    return res.send("You guessed correctly!" + "\n" +  game.picture);
       }else{
         game.hintsUsed++;
         } if (game.hintsUsed === 1) {
