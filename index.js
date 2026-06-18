@@ -26,7 +26,7 @@ app.get("/start/",  async (req, res) => {
     color:speciesData.color.name,
     habitat: speciesData.habitat.name
   };
-  res.send("You game ID is " + gameId);// send response which is your game ID
+  res.send("Your game ID is " + gameId);// send response which is your game ID
 });
 
 
@@ -44,18 +44,30 @@ app.post("/guess", (req, res) => {
 
       }else{
         game.hintsUsed++;
-
-          if(game.hintsUsed === game.hints){
+        } if (game.hintsUsed === 1) {
+              return res.send(game.color);
+            }
+            else if (gamehintsUsed === 2) {
+              return res.send(game.abilities)
+            }
+            else if (gamehintsUsed === 3) {
+              return res.send(game.types)
+            }
+            else if (gamehintsUsed === 4) {
+              return res.send(game.habitat)
+            }
+            else if (gamehintsUsed === 5) {
+              return res.send(game.firstLetter)
+            }
+            else (game.hintsUsed === 6){
             return res.send("Too many guesses the Pokemon was: " + game.pokemonName  )
-
-
-        }
-        
-    }
-        
+          }
+        });
 
 
 
 
-  });
+
+
+
 app.listen(4000);
