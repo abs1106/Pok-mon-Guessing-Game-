@@ -62,6 +62,8 @@ app.post("/guess", (req, res) => {
             else if (game.hintsUsed === 6) {
             return res.send("Too many guesses the Pokemon was: " + game.pokemonName  )
           }
+
+          console.log(game.pokemonName);
         });
 
 
