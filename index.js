@@ -39,7 +39,7 @@ app.post("/guess", (req, res) => {
         return res.status(404).json({ error: "GameId doesnt exist " });
       }
 
-      if (guess === game.pokemonName){
+      if (guess.toLowercase().trim()  === game.pokemonName){
         return res.send("You guessed correctly!");
 
       }else{
