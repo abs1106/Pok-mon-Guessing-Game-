@@ -47,19 +47,19 @@ app.post("/guess", (req, res) => {
         } if (game.hintsUsed === 1) {
               return res.send(game.color);
             }
-            else if (gamehintsUsed === 2) {
-              return res.send(game.abilities)
+            else if (game.hintsUsed === 2) {
+              return res.send(game.ability)
             }
-            else if (gamehintsUsed === 3) {
-              return res.send(game.types)
+            else if (game.hintsUsed === 3) {
+              return res.send(game.type)
             }
-            else if (gamehintsUsed === 4) {
+            else if (game.hintsUsed === 4) {
               return res.send(game.habitat)
             }
-            else if (gamehintsUsed === 5) {
+            else if (game.hintsUsed === 5) {
               return res.send(game.firstLetter)
             }
-            else (game.hintsUsed === 6){
+            else if (game.hintsUsed === 6) {
             return res.send("Too many guesses the Pokemon was: " + game.pokemonName  )
           }
         });
