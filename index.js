@@ -11,6 +11,7 @@ app.get("/start/",  async (req, res) => {
   const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)// fetch pokemom
   const pokemonData = await pokemonResponse.json();// store game
     games[gameId] = {
+    pokemonName: pokemonData.name,
     pokemonId,
     hints: 5,
     hintsUsed: 0
@@ -21,6 +22,24 @@ app.get("/start/",  async (req, res) => {
 app.listen(4000);
 
 app.post("/guess"), (req, res) => {
-    const games = req.body
-    res.send(PokemonResponse)
-}
+    const gameId = req.body.gameId
+    const guess = req.body.guess
+    const game = games[gameId]
+    
+     return res.status(404).json({ error: "GameId doesnt exist " });
+
+    if (guess === game.pokemonName)
+        res.send("You guessed correctly!");
+    {
+        
+    }
+        
+
+
+
+
+  }
+  
+    
+
+
